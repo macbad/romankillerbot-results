@@ -1,42 +1,42 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Publiczne statystyki RomanKillerBot BTCUSDT.">
-  <meta property="og:title" content="RomanKillerBot — publiczne wyniki">
-  <meta property="og:description" content="Aktualizowana historia zamkniętych transakcji symulowanych BTCUSDT.">
+  <meta name="description" content="Public RomanKillerBot BTCUSDT performance dashboard.">
+  <meta property="og:title" content="RomanKillerBot — Public Results">
+  <meta property="og:description" content="Continuously updated history of closed BTCUSDT trades.">
   <meta name="theme-color" content="#07131f">
-  <title>RomanKillerBot — publiczne wyniki</title>
+  <title>RomanKillerBot — Public Results</title>
   <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
   <main class="shell">
     <header class="topbar">
-      <div><p class="eyebrow">PUBLICZNY DZIENNIK</p><h1>RomanKillerBot <span>BTCUSDT</span></h1></div>
-      <div class="status-stack"><div id="status" class="status"><i></i><span>Ładowanie…</span></div><div id="updated" class="updated">—</div></div>
+      <div><p class="eyebrow">PUBLIC TRADING JOURNAL</p><h1>RomanKillerBot <span>BTCUSDT</span></h1></div>
+      <div class="status-stack"><div id="status" class="status"><i></i><span>Loading…</span></div><div id="updated" class="updated">—</div></div>
     </header>
 
-    <section class="metrics" aria-label="Najważniejsze statystyki">
-      <article><span>Saldo</span><strong id="balance">—</strong><small id="initial">—</small></article>
-      <article><span>Łączny PnL</span><strong id="pnl">—</strong><small id="return">—</small></article>
-      <article><span>Transakcje</span><strong id="count">—</strong><small id="record">—</small></article>
+    <section class="metrics" aria-label="Key performance statistics">
+      <article><span>Balance</span><strong id="balance">—</strong><small id="initial">—</small></article>
+      <article><span>Total PnL</span><strong id="pnl">—</strong><small id="return">—</small></article>
+      <article><span>Trades</span><strong id="count">—</strong><small id="record">—</small></article>
       <article><span>Win rate</span><strong id="win-rate">—</strong><small id="wl">—</small></article>
       <article><span>Profit factor</span><strong id="pf">—</strong><small id="expectancy">—</small></article>
       <article class="danger"><span>Max drawdown</span><strong id="drawdown">—</strong><small id="dd-pct">—</small></article>
     </section>
 
     <section class="grid">
-      <article class="panel chart-panel"><div class="heading"><div><p class="kicker">WYNIK W CZASIE</p><h2>Krzywa kapitału</h2></div><span id="curve-label">—</span></div><div class="canvas-wrap"><canvas id="chart" aria-label="Krzywa kapitału"></canvas><div id="empty" class="empty hidden">Brak zamkniętych transakcji</div></div></article>
-      <article class="panel"><div class="heading"><div><p class="kicker">SPOSÓB ZAMKNIĘCIA</p><h2>Rozkład wyjść</h2></div></div><div id="exit-bars" class="bars"></div><div class="mini"><div><span>Najlepszy</span><strong id="best">—</strong></div><div><span>Najgorszy</span><strong id="worst">—</strong></div><div><span>Śr. czas</span><strong id="avg-time">—</strong></div><div><span>Opłaty</span><strong id="fees">—</strong></div></div></article>
+      <article class="panel chart-panel"><div class="heading"><div><p class="kicker">PERFORMANCE OVER TIME</p><h2>Equity Curve</h2></div><span id="curve-label">—</span></div><div class="canvas-wrap"><canvas id="chart" aria-label="Equity curve"></canvas><div id="empty" class="empty hidden">No closed trades</div></div></article>
+      <article class="panel"><div class="heading"><div><p class="kicker">CLOSING METHOD</p><h2>Exit Breakdown</h2></div></div><div id="exit-bars" class="bars"></div><div class="mini"><div><span>Best</span><strong id="best">—</strong></div><div><span>Worst</span><strong id="worst">—</strong></div><div><span>Avg. duration</span><strong id="avg-time">—</strong></div><div><span>Fees</span><strong id="fees">—</strong></div></div></article>
     </section>
 
     <section class="panel trades-panel">
-      <div class="heading trade-heading"><div><p class="kicker">ZAMKNIĘTE POZYCJE</p><h2>Kolejne transakcje</h2></div><div class="filters" role="group" aria-label="Filtry"><button class="active" data-filter="all">Wszystkie</button><button data-filter="win">Zysk</button><button data-filter="loss">Strata</button><button data-filter="LONG">Long</button><button data-filter="SHORT">Short</button></div></div>
-      <div class="table-scroll"><table><thead><tr><th>#</th><th>Strona</th><th>Cena wejścia</th><th>Cena wyjścia</th><th>Wyjście</th><th>Czas trwania</th><th>Fee</th><th>PnL</th><th>Saldo po</th></tr></thead><tbody id="trades"><tr><td colspan="9" class="loading">Ładowanie historii…</td></tr></tbody></table></div>
-      <div class="table-footer"><span id="shown">—</span><button id="more">Pokaż więcej</button></div>
+      <div class="heading trade-heading"><div><p class="kicker">CLOSED POSITIONS</p><h2>Trade History</h2></div><div class="filters" role="group" aria-label="Filters"><button class="active" data-filter="all">All</button><button data-filter="win">Wins</button><button data-filter="loss">Losses</button><button data-filter="LONG">Long</button><button data-filter="SHORT">Short</button></div></div>
+      <div class="table-scroll"><table><thead><tr><th>#</th><th>Side</th><th>Entry Price</th><th>Exit Price</th><th>Exit</th><th>Duration</th><th>Fee</th><th>PnL</th><th>Balance After</th></tr></thead><tbody id="trades"><tr><td colspan="9" class="loading">Loading trade history…</td></tr></tbody></table></div>
+      <div class="table-footer"><span id="shown">—</span><button id="more">Show more</button></div>
     </section>
-    <footer><span>RomanKillerBot · BTCUSDT</span><span id="source">—</span><span>Wyniki historyczne nie gwarantują przyszłych.</span></footer>
+    <footer><span>RomanKillerBot · BTCUSDT</span><span id="source">—</span><span>Past performance does not guarantee future results.</span></footer>
   </main>
   <script src="./assets/app.js" defer></script>
 </body>
