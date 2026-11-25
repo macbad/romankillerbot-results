@@ -1,6 +1,6 @@
 param(
     [ValidateRange(60, 86400)]
-    [int]$IntervalSeconds = 300,
+    [int]$IntervalSeconds = 3600,
     [switch]$Once
 )
 
